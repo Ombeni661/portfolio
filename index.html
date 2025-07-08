@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of ombeni, a world-class software developer">
+  <meta name="keywords" content="software developer, portfolio, web development, ombeni">
+  <meta name="author" content="ombeni">
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="ombeni - Software Developer Portfolio">
+  <meta property="og:description" content="Discover the innovative projects and skills of ombeni, a passionate software developer.">
+  <meta property="og:type" content="website">
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ombeni - Software Developer Portfolio">
+  <meta name="twitter:description" content="Discover the innovative projects and skills of ombeni, a passionate software developer.">
+  <title>ombeni - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="c:\Users\HP\Desktop\portfolio\images\Contemporary Emblem Logo for VUBA+ Hospital.png">
+
+  <style>
+    /* ====== CSS STYLES ====== */
+    :root {
+      --primary-color: #5b4eff;
+      --secondary-color: #ff4e88;
+      --text-color: #1a1a1a;
+      --bg-color: #f5f7fa;
+      --card-bg: #ffffff;
+      --nav-bg: rgba(255, 255, 255, 0.1);
+      --nav-blur: blur(10px);
+      --footer-bg: #0f0f0f;
+      --footer-text: #e0e0e0;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    }
+
+    [data-theme="dark"] {
+      --primary-color: #6c5fff;
+      --secondary-color: #ff6197;
+      --text-color: #e0e0e0;
+      --bg-color: #121212;
+      --card-bg: #1c1c1c;
+      --nav-bg: rgba(30, 30, 30, 0.1);
+      --footer-bg: #000;
+      --footer-text: #cccccc;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      transition: all 0.3s ease;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--primary-color);
+      transition: color 0.3s ease;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation */
+    .navbar {
+      background: var(--nav-bg);
+      backdrop-filter: var(--nav-blur);
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: background 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    [data-theme="dark"] .navbar.scrolled {
+      background: rgba(30, 30, 30, 0.95);
+    }
+
+    .navbar-brand img {
+      height: 50px;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover img {
+      transform: scale(1.1);
+    }
+
+    .nav-link {
+      font-weight: 600;
+      margin: 0 15px;
+      color: var(--text-color);
+      position: relative;
+      transition: color 0.3s ease;
+      animation: slideIn 0.5s ease forwards;
+      opacity: 0;
+    }
+
+    .nav-link:nth-child(1) { animation-delay: 0.1s; }
+    .nav-link:nth-child(2) { animation-delay: 0.2s; }
+    .nav-link:nth-child(3) { animation-delay: 0.3s; }
+    .nav-link:nth-child(4) { animation-delay: 0.4s; }
+    .nav-link:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes slideIn {
+      from { transform: translateY(-10px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -5px;
+      left: 0;
+      background: var(--gradient);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .navbar-toggler {
+      border: none;
+      background: none;
+      cursor: pointer;
+      position: relative;
+      width: 30px;
+      height: 20px;
+    }
+
+    .navbar-toggler span,
+    .navbar-toggler::before,
+    .navbar-toggler::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background: var(--text-color);
+      transition: all 0.3s ease;
+    }
+
+    .navbar-toggler::before {
+      top: 0;
+    }
+
+    .navbar-toggler span {
+      top: 8px;
+    }
+
+    .navbar-toggler::after {
+      top: 16px;
+    }
+
+    .navbar-toggler.active::before {
+      transform: rotate(45deg);
+      top: 8px;
+    }
+
+    .navbar-toggler.active span {
+      opacity: 0;
+    }
+
+    .navbar-toggler.active::after {
+      transform: rotate(-45deg);
+      top: 8px;
+    }
+
+    .navbar-collapse {
+      transition: transform 0.3s ease;
+      transform: translateX(100%);
+      position: fixed;
+      top: 70px;
+      right: 0;
+      width: 250px;
+      height: calc(100vh - 70px);
+      background: var(--card-bg);
+      padding: 20px;
+      display: none;
+    }
+
+    .navbar-collapse.show {
+      transform: translateX(0);
+      display: block;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient);
+      color: #fff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://via.placeholder.com/1920x1080?text=Abstract+Background') center/cover;
+      opacity: 0.2;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero-section img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .hero-section img:hover {
+      transform: scale(1.1);
+    }
+
+    .hero-section h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-section p {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 40px;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      background: var(--gradient);
+      color: #fff;
+      border: none;
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 50px;
+      position: relative;
+      text-align: center;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 4px;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gradient);
+      border-radius: 2px;
+    }
+
+    .bg-light {
+      background-color: var(--card-bg) !important;
+      box-shadow: var(--shadow);
+    }
+
+    /* Cards */
+    .card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      background: var(--card-bg);
+      height: 100%;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-img-top {
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-img-top {
+      transform: scale(1.05);
+    }
+
+    .card-body {
+      padding: 30px;
+      background: var(--card-bg);
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .card-text {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .btn-secondary {
+      background: var(--secondary-color);
+      color: #fff;
+      border: none;
+      margin-left: 10px;
+    }
+
+    /* Projects Carousel */
+    .projects-carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 20px;
+      padding-bottom: 20px;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .projects-carousel::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .projects-carousel::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 4px;
+    }
+
+    .projects-carousel .card {
+      flex: 0 0 350px;
+      scroll-snap-align: start;
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-item {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .skill-item:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Contact Section */
+    #contact a {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px 30px;
+      background: var(--gradient);
+      color: #fff;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+
+    #contact a:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    }
+
+    /* Footer */
+    footer {
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      padding: 30px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* Theme Toggle Button */
+    #theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--text-color);
+      transition: transform 0.3s ease;
+    }
+
+    #theme-toggle:hover {
+      transform: rotate(360deg);
+    }
+
+    /* Language Selector */
+    .form-select {
+      background: var(--card-bg);
+      color: var(--text-color);
+      border: 1px solid var(--primary-color);
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero-section h1 {
+        font-size: 3rem;
+      }
+
+      .hero-section p {
+        font-size: 1.2rem;
+      }
+
+      .navbar-collapse {
+        display: block;
+      }
+
+      .nav-link {
+        margin: 10px 0;
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 80px 0;
+      }
+
+      .hero-section h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-section p {
+        font-size: 1rem;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .projects-carousel .card {
+        flex: 0 0 300px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-section img {
+        width: 140px;
+        height: 140px;
+      }
+
+      .btn {
+        padding: 12px 30px;
+      }
+
+      .projects-carousel .card {
+        flex: 0 0 250px;
+      }
+    }
+  </style>
+</head>
+<body class="light-mode" data-theme="light">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container hero-content">
+      <a class="navbar-brand" href="#">
+         <img src="c:\Users\HP\Desktop\portfolio\images\Contemporary Emblem Logo for VUBA+ Hospital.png" alt="Logo" style="height: 40px; vertical-align: middle; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-right: 10px;">
+      </a>
+      <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+        <span></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home" data-i18n="nav.home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about" data-i18n="nav.about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills" data-i18n="nav.skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects" data-i18n="nav.projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+        <select id="language-selector" class="form-select w-auto ms-3">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="rw">Kinyarwanda</option>
+        </select>
+        <button id="theme-toggle" class="btn ms-3">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="container hero-content">
+      <img src="c:\Users\HP\Pictures\Screenshot_20250202-230431.png" alt="Profile" class="rounded-circle">
+      <h1 data-i18n="hero.title">ombeni</h1>
+      <p data-i18n="hero.tagline">Crafting innovative solutions with code</p>
+      <a href="#contact" class="btn" data-i18n="hero.cta">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 data-i18n="about.title">About Me</h2>
+      <p data-i18n="about.description">
+        I'm a passionate software developer specializing in creating high-quality web applications using cutting-edge technologies. 
+        My mission is to deliver seamless, user-centric solutions that tackle real-world challenges with creativity and precision.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="bg-light">
+    <div class="container">
+      <h2 data-i18n="skills.title">Skills & Technologies</h2>
+      <div class="skills-grid">
+        <div class="skill-item">HTML5</div>
+        <div class="skill-item">CSS3</div>
+        <div class="skill-item">JavaScript</div>
+        <div class="skill-item">React</div>
+        <div class="skill-item">Bootstrap</div>
+        <div class="skill-item">Git</div>
+        <div class="skill-item">Node.js</div>
+        <div class="skill-item">TypeScript</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2 data-i18n="projects.title">Projects</h2>
+      <div class="projects-carousel">
+        <div class="card">
+          <img src="c:\Users\HP\Desktop\portfolio\images\The Wellhall (1).png" class="card-img-top" alt="Project 1">
+          <div class="card-body">
+            <h5 class="card-title" data-i18n="projects.project1.title">E-Commerce Platform</h5>
+            <p class="card-text" data-i18n="projects.project1.description">A scalable web app built with React, Redux, and Bootstrap.</p>
+            <a href="#" class="btn" data-i18n="projects.demo">Demo</a>
+            <a href="#" class="btn btn-secondary" data-i18n="projects.source">Source</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="c:\Users\HP\Desktop\portfolio\images\The Wellhall (2).png" class="card-img-top" alt="Project 2">
+          <div class="card-body">
+            <h5 class="card-title" data-i18n="projects.project2.title">Portfolio Showcase</h5>
+            <p class="card-text" data-i18n="projects.project2.description">A modern, responsive portfolio template with animations.</p>
+            <a href="#" class="btn" data-i18n="projects.demo">Demo</a>
+            <a href="#" class="btn btn-secondary" data-i18n="projects.source">Source</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="c:\Users\HP\Desktop\portfolio\images\The Wellhall.png" class="card-img-top" alt="Project 3">
+          <div class="card-body">
+            <h5 class="card-title" data-i18n="projects.project3.title">Weather Dashboard</h5>
+            <p class="card-text" data-i18n="projects.project3.description">Real-time weather app with API integration.</p>
+            <a href="#" class="btn" data-i18n="projects.demo">Demo</a>
+            <a href="#" class="btn btn-secondary" data-i18n="projects.source">Source</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="c:\Users\HP\Desktop\portfolio\images\The Wellhall (3).png" class="card-img-top" alt="Project 4">
+          <div class="card-body">
+            <h5 class="card-title" data-i18n="projects.project4.title">Task Manager</h5>
+            <p class="card-text" data-i18n="projects.project4.description">A productivity app with React and Firebase.</p>
+            <a href="#" class="btn" data-i18n="projects.demo">Demo</a>
+            <a href="#" class="btn btn-secondary" data-i18n="projects.source">Source</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-light">
+    <div class="container">
+      <h2 data-i18n="contact.title">Contact Me</h2>
+      <div class="text-center">
+        <a href="mailto:fabcreator14@gmail.com">fabcreator14@gmail.com</a>
+        <a href="https://github.com/ombeni661">GitHub</a>
+        <a href="https://Instagram.com/ombeni______7">Instagram</a>
+         <a href="https://facebook.com/Om Beni">facebook</a>
+         <a href="https://wa.me/250725733171" target="_blank">WhatsApp</a> 
+        <a href="tel:+250725733171"> hamagara: +250725733171</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© <span id="current-year">2025</span> ombeni. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // ====== JAVASCRIPT ======
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set current year
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+
+      // Theme Toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      body.setAttribute('data-theme', 'dark');
+      themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌩';
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        localStorage.setItem('theme', newTheme);
+      });
+
+      // Language Switching
+      const languageSelector = document.getElementById('language-selector');
+      const translations = {
+        en: {
+          'nav.home': 'Home',
+          'nav.about': 'About',
+          'nav.skills': 'Skills',
+          'nav.projects': 'Projects',
+          'nav.contact': 'Contact',
+          'hero.title': 'ombeni',
+          'hero.tagline': 'Crafting innovative solutions with code',
+          'hero.cta': 'Get in Touch',
+          'about.title': 'About Me',
+          'about.description': 'I am a passionate software developer specializing in creating high-quality web applications using cutting-edge technologies. My mission is to deliver seamless, user-centric solutions that tackle real-world challenges with creativity and precision.',
+          'skills.title': 'Skills & Technologies',
+          'projects.title': 'Projects',
+          'projects.project1.title': 'E-Commerce Platform',
+          'projects.project1.description': 'A scalable web app built with React, Redux, and Bootstrap.',
+          'projects.project2.title': 'Portfolio Showcase',
+          'projects.project2.description': 'A modern, responsive portfolio template with animations.',
+          'projects.project3.title': 'Weather Dashboard',
+          'projects.project3.description': 'Real-time weather app with API integration.',
+          'projects.project4.title': 'Task Manager',
+          'projects.project4.description': 'A productivity app with React and Firebase.',
+          'projects.demo': 'Demo',
+          'projects.source': 'Source',
+          'contact.title': 'Contact Me'
+        },
+        fr: {
+          'nav.home': 'Accueil',
+          'nav.about': 'À propos',
+          'nav.skills': 'Compétences',
+          'nav.projects': 'Projets',
+          'nav.contact': 'Contact',
+          'hero.title': 'ombeni',
+          'hero.tagline': 'Construire des solutions innovantes avec du code',
+          'hero.cta': 'Contactez-moi',
+          'about.title': 'À propos de moi',
+          'about.description': 'Je suis un développeur de logiciels passionné, spécialisé dans la création d\'applications web de haute qualité utilisant des technologies de pointe. Ma mission est de fournir des solutions fluides et centrées sur l\'utilisateur qui répondent aux défis du monde réel avec créativité et précision.',
+          'skills.title': 'Compétences et Technologies',
+          'projects.title': 'Projets',
+          'projects.project1.title': 'Plateforme E-Commerce',
+          'projects.project1.description': 'Une application web évolutive construite avec React, Redux et Bootstrap.',
+          'projects.project2.title': 'Vitrine de Portfolio',
+          'projects.project2.description': 'Un modèle de portfolio moderne et responsive avec animations.',
+          'projects.project3.title': 'Tableau de Bord Météo',
+          'projects.project3.description': 'Application météo en temps réel avec intégration d\'API.',
+          'projects.project4.title': 'Gestionnaire de Tâches',
+          'projects.project4.description': 'Une application de productivité avec React et Firebase.',
+          'projects.demo': 'Démo',
+          'projects.source': 'Code source',
+          'contact.title': 'Contactez-moi'
+        },
+        rw: {
+          'nav.home': 'Ahabanza',
+          'nav.about': 'Ibyerekeye',
+          'nav.skills': 'Ubuhanga',
+          'nav.projects': 'Porogaramu',
+          'nav.contact': 'Kwandikira',
+          'hero.title': 'ombeni',
+          'hero.tagline': 'Kubaka ibisubizo bishya bikoresheje code',
+          'hero.cta': 'Vugana nanjye',
+          'about.title': 'Ibyerekeye nanjye',
+          'about.description': 'Ndi umubatsi wa porogaramu ufite ishyaka, ndayobora mu kubaka aplikasiyo z\'urubuga z\'ubuziranenge bwinshi zikoresha ikoranabuhanga rya gihe. Intego yanjye ni gutanga ibisubizo byoroshye kandi bifashije abakoresha, bibanda ku bibazo by\'ukuri by\'isi binyuze mu kurema n\'ubunyamwuga.',
+          'skills.title': 'Ubuhanga n\'Ikoranabuhanga',
+          'projects.title': 'Porogaramu',
+          'projects.project1.title': 'Urubuga rw\'Ubucuruzi',
+          'projects.project1.description': 'Aplikasiyo y\'urubuga inakorerwa yubatswe ikoresheje React, Redux na Bootstrap.',
+          'projects.project2.title': 'Urubuga rw\'Iperey',
+          'projects.project2.description': 'Inyandikoporogaramu ya none ihereye kandi ifite animasiyo.',
+          'projects.project3.title': 'Ikibuga cy\'Ibihe',
+          'projects.project3.description': 'Aplikasiyo y\'ibihe by\'ukuri ifite API.',
+          'projects.project4.title': 'Umuyobozi w\'Imirimo',
+          'projects.project4.description': 'Aplika y\'umurimo ifite React na Firebase.',
+          'projects.demo': 'Reba',
+          'projects.source': 'Inkomoko',
+          'contact.title': 'Kwandikira'
+        }
+      };
+
+      function updateText(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[lang] && translations[lang][key]) {
+            el.textContent = translations[lang][key];
+          }
+        });
+      }
+
+      const savedLang = localStorage.getItem('language') || 'en';
+      languageSelector.value = savedLang;
+      updateText(savedLang);
+
+      languageSelector.addEventListener('change', (e) => {
+        const lang = e.target.value;
+        updateText(lang);
+        localStorage.setItem('language', lang);
+      });
+
+      // Navbar Toggle
+      const navbarToggler = document.querySelector('.navbar-toggler');
+      const navbarCollapse = document.querySelector('.navbar-collapse');
+
+      navbarToggler.addEventListener('click', () => {
+        navbarToggler.classList.toggle('active');
+        navbarCollapse.classList.toggle('show');
+      });
+
+      // Close navbar on link click
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          navbarToggler.classList.remove('active');
+          navbarCollapse.classList.remove('show');
+        });
+      });
+
+      // Smooth Scrolling
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = document.querySelector(anchor.getAttribute('href'));
+          target.scrollIntoView({ behavior: 'smooth' });
+
+          // Update active link
+          document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+          anchor.classList.add('active');
+        });
+      });
+
+      // Navbar Scroll Effect
+      window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+      });
+
+      // Projects Carousel Touch Support
+      const carousel = document.querySelector('.projects-carousel');
+      let isDragging = false;
+      let startX, scrollLeft;
+
+      carousel.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+      });
+
+      carousel.addEventListener('mouseleave', () => {
+        isDragging = false;
+      });
+
+      carousel.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+
+      carousel.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 2;
+        carousel.scrollLeft = scrollLeft - walk;
+      });
+
+      // Touch Events
+      carousel.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = e.touches[0].pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+      });
+
+      carousel.addEventListener('touchend', () => {
+        isDragging = false;
+      });
+
+      carousel.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const x = e.touches[0].pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 2;
+        carousel.scrollLeft = scrollLeft - walk;
+      });
+    });
+  </script>
+</body>
+</html>
